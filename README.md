@@ -25,7 +25,7 @@ The target is to understand useful APIs and how the pieces fit together—not to
 | Part 1 — current exercises | scikit-learn | Provides starter ML models, datasets, train/test splitting and evaluation metrics | Basic setup |
 | Part 1 — tests | pytest | Runs automated checks for course code | Optional development install via `.[dev]` |
 | Part 1 — MNIST project | NumPy | Store image arrays and implement the neural network, backpropagation and gradient-descent updates | Basic setup |
-| Part 1 — MNIST project | Matplotlib | Display test digits and model predictions | Optional: install with `python -m pip install -e ".[visual]"` |
+| Part 1 — MNIST project | Matplotlib | Display test digits, predictions, and a visual walkthrough of one real training step | Optional: install with `python -m pip install -e ".[visual]"` |
 | Part 1 — MNIST project | MNIST dataset | 28×28 handwritten digit images and labels; downloaded automatically from a public Google-hosted mirror | Exercise 01 downloads it on first run; internet required |
 | Part 1 — maze project | Python standard library (`random`, `argparse`, `collections`, `dataclasses`) | Train a tabular Q-learning agent in a maze using actions and rewards | No extra install needed |
 | Part 2 — pretrained model | PyTorch | Runs tensor operations and the neural network computations | Install `.[pretrained]` |
@@ -76,7 +76,7 @@ When you reach Part 4, install the optional Gemini SDK with `python -m pip insta
 
 ## Part 1 — Train a neural network on MNIST
 
-The original exercises 01–09 remain as a foundation for datasets, features, fitting, prediction, evaluation, classification and overfitting. The first hands-on project trains a small neural network **from scratch with NumPy** to recognize handwritten digits. It includes automatic or manual dataset acquisition, training with backpropagation and gradient descent, and a visualization of test predictions. Start with the [MNIST project guide](1-first-ml/mnist/README.md). The second project trains a maze agent using reinforcement learning and Q-learning. Start with the [maze project guide](1-first-ml/maze/README.md).
+The original exercises 01–09 remain as a foundation for datasets, features, fitting, prediction, evaluation, classification and overfitting. The first hands-on project trains a small neural network **from scratch with NumPy** to recognize handwritten digits. It includes automatic or manual dataset acquisition, training with backpropagation and gradient descent, a visualization of test predictions, and a visual walkthrough of one real training step (forward pass, loss, gradients, and parameter update). Start with the [MNIST project guide](1-first-ml/mnist/README.md). The second project trains a maze agent using reinforcement learning and Q-learning. Start with the [maze project guide](1-first-ml/maze/README.md).
 
 | Exercise | Program | Idea |
 |---:|---|---|
