@@ -6,7 +6,7 @@ The format is inspired by the structure of beginner-friendly programming courses
 
 ## What you will learn
 
-**Part 1 — First ML programs:** prepare examples, separate features and targets, split data, create and fit a model, make predictions, measure error, classify examples, and notice overfitting.
+**Part 1 — Train a neural network:** train a small NumPy neural network on MNIST handwritten digits, inspect loss and accuracy, visualize predictions, then build a maze agent that learns from actions and rewards. The original 01–09 exercises remain as foundations while the project sequence is developed.
 
 **Part 2 — Assemble and inspect DistilGPT2:** tokenize text, inspect configuration and files, load the checkpoint, examine learned parameters, run the forward pass, inspect next-token scores, and write a token-by-token generation loop.
 
@@ -24,9 +24,9 @@ The target is to understand useful APIs and how the pieces fit together—not to
 | Part 1 — current exercises | NumPy | Stores numerical data in arrays and supports numerical calculations | Basic setup |
 | Part 1 — current exercises | scikit-learn | Provides starter ML models, datasets, train/test splitting and evaluation metrics | Basic setup |
 | Part 1 — tests | pytest | Runs automated checks for course code | Optional development install via `.[dev]` |
-| Part 1 — handwriting project (planned) | NumPy | Implement neural-network calculations and learning steps in arrays | When the project is added |
-| Part 1 — handwriting project (planned) | Matplotlib | Display sample digits and visualize training results | When the project is added |
-| Part 1 — handwriting project (planned) | A small handwritten-digit dataset, such as scikit-learn's built-in digits dataset | Supplies labeled examples; the first version should avoid a large download | When the project is added |
+| Part 1 — MNIST project | NumPy | Store image arrays and implement the neural network, backpropagation and gradient-descent updates | Basic setup |
+| Part 1 — MNIST project | Matplotlib | Display test digits and model predictions | Optional: install with `python -m pip install -e ".[visual]"` |
+| Part 1 — MNIST project | MNIST dataset | 28×28 handwritten digit images and labels; downloaded automatically from a public Google-hosted mirror | Exercise 01 downloads it on first run; internet required |
 | Part 1 — maze project (planned) | Python standard library | Represent the grid, actions, rewards and training loop | No extra install planned |
 | Part 2 — pretrained model | PyTorch | Runs tensor operations and the neural network computations | Install `.[pretrained]` |
 | Part 2 — pretrained model | Hugging Face Transformers | Loads the tokenizer, model architecture and pretrained checkpoint | Install `.[pretrained]` |
@@ -35,7 +35,7 @@ The target is to understand useful APIs and how the pieces fit together—not to
 | Part 5 — simple RAG | Python standard library | Reads local text files and builds the prompt | No extra install planned |
 | Part 5 — simple RAG | Google Gen AI SDK (`google-genai`) | Sends retrieved passages and a question to the hosted model | Same optional `.[api]` install as Part 4 |
 
-The handwriting and maze projects are the **planned project-based redesign of Part 1**; they have not replaced the current exercises yet. The README will be updated again when their runnable lessons are added. No library is required just because it is popular: we will add a dependency only when the project needs it and explain its role.
+The MNIST project is now available in [`1-first-ml/mnist/`](1-first-ml/mnist/README.md). The maze-learning project is the next planned project; it will be documented and implemented separately after the MNIST project is developed further. No library is required just because it is popular: we add dependencies only when the project needs them and explain their role.
 
 ## Start here: setup in VS Code
 
@@ -55,14 +55,14 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Install the libraries for Part 1 (NumPy, scikit-learn, and pytest):
+Install the libraries for the existing Part 1 foundations (NumPy, scikit-learn, and pytest):
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
 
-When you reach Part 2, install the additional libraries (PyTorch and Transformers):
+For the MNIST visualization, optionally install Matplotlib with `python -m pip install -e ".[visual]"`. Exercises 01–02 in the MNIST project need no additional library beyond NumPy.\n\nWhen you reach Part 2, install the additional libraries (PyTorch and Transformers):
 
 ```bash
 python -m pip install -e ".[pretrained]"
@@ -72,9 +72,9 @@ Part 3 uses those same libraries and the same DistilGPT2 model. **No additional 
 
 When you reach Part 4, install the optional Gemini SDK with `python -m pip install -e ".[api]"`. Follow the [Part 4 setup guide](4-model-apis/README.md) and do not enable paid billing for this course.
 
-## Part 1 — First ML programs (being redesigned around projects)
+## Part 1 — Train a neural network on MNIST
 
-The current exercises 01–09 introduce datasets, features, targets, fitting, prediction, evaluation, classification and overfitting. Our next revision will teach these ideas through two projects, in order: **(1) train a small neural network to recognize handwritten digits, including a visible training process; (2) build a maze agent that learns from actions and rewards.** The project lessons are planned work, not yet present as runnable exercises. We will build and document the first project before moving on to the second.
+The original exercises 01–09 remain as a foundation for datasets, features, fitting, prediction, evaluation, classification and overfitting. The first hands-on project now trains a small neural network **from scratch with NumPy** to recognize handwritten digits. It includes an automatic dataset downloader, training with backpropagation and gradient descent, and a visualization of test predictions. Start with the [MNIST project guide](1-first-ml/mnist/README.md). After this project, the next planned project is a maze agent that learns from actions and rewards.
 
 | Exercise | Program | Idea |
 |---:|---|---|
