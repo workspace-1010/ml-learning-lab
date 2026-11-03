@@ -1,6 +1,6 @@
 # ML Learning Lab
 
-An exercise-first path to **basic machine learning, understanding a pretrained language model, and assembling a tiny inference engine**.
+An exercise-first path from **basic machine learning** to understanding a pretrained model, building a tiny inference engine, using a hosted model API, and building a simple RAG application.
 
 The format is inspired by the structure of beginner-friendly programming courses such as Codédex: numbered topic folders, one small runnable program per exercise, and a single index that helps you follow the sequence. The code and explanations here are original; this is not a copy of another course.
 
@@ -100,6 +100,33 @@ For model exercises, use the same activated Python environment and keep prompts/
 
 Every model exercise uses direct Transformers APIs such as `AutoTokenizer` and `AutoModelForCausalLM`. **No `pipeline()` is used**, because loading, tokenization, logits and generation are what we want to learn.
 
+## Part 4 — Use a model through an API
+
+Learn what APIs, endpoints, requests, responses, JSON, and API keys are. Then send a prompt to a model hosted by a provider and read the response. Your PC runs the application; the provider's server runs inference. See [Part 4's guide](4-model-apis/README.md).
+
+| Exercise | Program | Idea |
+|---:|---|---|
+| 25 | API concepts | Understand requests, responses, endpoints and authentication |
+| 26 | HTTP and JSON | Inspect a simple API response |
+| 27 | API settings | Read configuration from environment variables |
+| 28 | Call a model API | Send a prompt and read generated text |
+| 29 | Handle API errors | Deal with missing settings, failed requests and bad responses |
+
+## Part 5 — Build a simple RAG application
+
+Use a few local text files as a tiny knowledge base. Split them into passages, retrieve relevant passages with keyword matching, add them to a prompt, and send the prompt to the model API from Part 4. See [Part 5's guide](5-simple-rag/README.md).
+
+| Exercise | Program | Idea |
+|---:|---|---|
+| 30 | Create a knowledge base | Store a few facts locally |
+| 31 | Split documents | Turn documents into passages |
+| 32 | Retrieve passages | Find useful text with keyword matching |
+| 33 | Build the context prompt | Combine evidence and the question |
+| 34 | Generate with RAG | Call the model API using retrieved context |
+| 35 | Test failures | Compare results and inspect unsupported answers |
+
+Start with keyword retrieval so the learner can understand the complete RAG process before learning embeddings or vector databases.
+
 ## Designed for a modest computer
 
 Start with CPU inference, short prompts, and small generation lengths. The checkpoint is about 353 MB, but the full program uses more RAM because Python, PyTorch and intermediate tensors also require memory. Four GB is a constrained target, so close memory-heavy programs. Do not download every alternate model export, and never commit weights or model caches to this repository.
@@ -113,4 +140,4 @@ Start with CPU inference, short prompts, and small generation lengths. The check
 - [Glossary](docs/glossary.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 
-No RAG or vector-database section is included in this version. The goal is to understand ML, the model, and the inference path before adding another system around it.
+RAG is introduced only after the learner has studied the model, the inference path, and remote model APIs. Vector databases and embeddings are optional extensions, not prerequisites for the first RAG project.
