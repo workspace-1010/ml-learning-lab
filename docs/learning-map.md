@@ -20,8 +20,24 @@ Follow `3-inference-engine/README.md`:
 
 Request → validate settings → tokenize prompt → check context budget → model forward pass → decoding policy → stop condition → decoded response.
 
-Then inspect two practical inference-system ideas: KV cache (reuse past key/value states) and streaming (show each token as it arrives). These exercises reuse the same model and dependencies from Part 2; no new model download is required if the checkpoint is already cached.
+Then inspect KV cache and streaming. These exercises reuse the same model and dependencies from Part 2. They are teaching examples, not a production inference server.
 
-## Deliberately out of scope
+## Part 4 — Use a model through an API
 
-This version does not cover RAG, vector databases, fine-tuning, training a transformer from random initialization, or production serving infrastructure. Those are useful topics, but they would dilute the current goal of understanding the model and its basic inference path.
+Follow `4-model-apis/README.md`:
+
+Python application → API request → HTTPS endpoint + authentication → provider runs model inference → JSON response → application extracts generated text.
+
+The learner's PC runs the client application. The provider's server runs the model. API keys stay in environment variables; costs, limits and supported request formats depend on the provider.
+
+## Part 5 — Build a simple RAG application
+
+Follow `5-simple-rag/README.md`:
+
+Local documents → small passages → keyword retrieval → question + retrieved evidence → model API → generated response → inspect whether the response is supported.
+
+This first implementation deliberately uses keyword matching instead of embeddings or a vector database. That keeps the retrieval step visible and the hardware requirements modest. RAG adds context; it does not guarantee factual answers.
+
+## Deliberately out of scope for the first RAG version
+
+Vector databases, embedding models, fine-tuning, training a transformer from random initialization, and production-grade serving infrastructure. They can be optional extensions after the learner understands the end-to-end flow.
