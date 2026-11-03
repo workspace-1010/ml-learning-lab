@@ -14,6 +14,14 @@ Text → tokenizer → token IDs → architecture + config + checkpoint weights 
 
 A learner should be able to identify the model's main components, explain what the raw output means, and write a short next-token loop without using `pipeline()`.
 
+## Part 3 — A tiny inference engine
+
+Follow `3-inference-engine/README.md`:
+
+Request → validate settings → tokenize prompt → check context budget → model forward pass → decoding policy → stop condition → decoded response.
+
+Then inspect two practical inference-system ideas: KV cache (reuse past key/value states) and streaming (show each token as it arrives). These exercises reuse the same model and dependencies from Part 2; no new model download is required if the checkpoint is already cached.
+
 ## Deliberately out of scope
 
-This version does not cover RAG, vector databases, fine-tuning or training a transformer from random initialization. Those are useful topics, but they would dilute the current goal of understanding and using a pretrained model.
+This version does not cover RAG, vector databases, fine-tuning, training a transformer from random initialization, or production serving infrastructure. Those are useful topics, but they would dilute the current goal of understanding the model and its basic inference path.
