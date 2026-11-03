@@ -19,6 +19,7 @@ pretrained = [
   "transformers>=4.44,<5",
   "torch>=2.3",
 ]
+api = ["google-genai>=1.0,<2"]
 
 [tool.setuptools]
 packages = []
