@@ -14,6 +14,29 @@ The format is inspired by the structure of beginner-friendly programming courses
 
 The target is to understand useful APIs and how the pieces fit together—not to memorize every function, build a production server, or train an LLM from scratch.
 
+## Libraries used in this course
+
+**Rule: every external library is named here before learners encounter it.** Python's built-in syntax and standard library are assumed; everything else is listed below with its purpose and when to install it.
+
+| Course section | Library/tool | What it does | When it is needed |
+|---|---|---|---|
+| All sections | Python 3.10+ | Language used to write the exercises | Install Python first |
+| Part 1 — current exercises | NumPy | Stores numerical data in arrays and supports numerical calculations | Basic setup |
+| Part 1 — current exercises | scikit-learn | Provides starter ML models, datasets, train/test splitting and evaluation metrics | Basic setup |
+| Part 1 — tests | pytest | Runs automated checks for course code | Optional development install via `.[dev]` |
+| Part 1 — handwriting project (planned) | NumPy | Implement neural-network calculations and learning steps in arrays | When the project is added |
+| Part 1 — handwriting project (planned) | Matplotlib | Display sample digits and visualize training results | When the project is added |
+| Part 1 — handwriting project (planned) | A small handwritten-digit dataset, such as scikit-learn's built-in digits dataset | Supplies labeled examples; the first version should avoid a large download | When the project is added |
+| Part 1 — maze project (planned) | Python standard library | Represent the grid, actions, rewards and training loop | No extra install planned |
+| Part 2 — pretrained model | PyTorch | Runs tensor operations and the neural network computations | Install `.[pretrained]` |
+| Part 2 — pretrained model | Hugging Face Transformers | Loads the tokenizer, model architecture and pretrained checkpoint | Install `.[pretrained]` |
+| Parts 2–3 — model files | Hugging Face Hub (installed as a dependency) | Downloads and caches model files | Installed with the model dependencies |
+| Part 4 — model API | Google Gen AI SDK (`google-genai`) | Sends prompts to a remotely hosted Gemini model | Install `.[api]`; internet and an available API quota required |
+| Part 5 — simple RAG | Python standard library | Reads local text files and builds the prompt | No extra install planned |
+| Part 5 — simple RAG | Google Gen AI SDK (`google-genai`) | Sends retrieved passages and a question to the hosted model | Same optional `.[api]` install as Part 4 |
+
+The handwriting and maze projects are the **planned project-based redesign of Part 1**; they have not replaced the current exercises yet. The README will be updated again when their runnable lessons are added. No library is required just because it is popular: we will add a dependency only when the project needs it and explain its role.
+
 ## Start here: setup in VS Code
 
 For the complete beginner walkthrough, including every required library installation and the model-file download steps, read **[the setup guide](docs/setup-guide.md)** first. This project assumes you already have Python and VS Code installed and have opened the repository folder in VS Code.
@@ -49,7 +72,9 @@ Part 3 uses those same libraries and the same DistilGPT2 model. **No additional 
 
 When you reach Part 4, install the optional Gemini SDK with `python -m pip install -e ".[api]"`. Follow the [Part 4 setup guide](4-model-apis/README.md) and do not enable paid billing for this course.
 
-## Part 1 — First ML programs
+## Part 1 — First ML programs (being redesigned around projects)
+
+The current exercises 01–09 introduce datasets, features, targets, fitting, prediction, evaluation, classification and overfitting. Our next revision will teach these ideas through two projects, in order: **(1) train a small neural network to recognize handwritten digits, including a visible training process; (2) build a maze agent that learns from actions and rewards.** The project lessons are planned work, not yet present as runnable exercises. We will build and document the first project before moving on to the second.
 
 | Exercise | Program | Idea |
 |---:|---|---|
