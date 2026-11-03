@@ -45,6 +45,27 @@ Use local text files as a tiny knowledge base. Split text into passages, retriev
 
 Start without embeddings or a vector database. These add concepts and dependencies that are not necessary to understand the basic RAG architecture. They can be optional extensions later.
 
+## The RAG project grows in stages
+
+The goal is to bridge the gap between completing guided exercises and independently building an application. Do not remove the existing parts or skip the API section: Part 4 teaches the client/server boundary and API handling that Part 5 needs.
+
+Treat the RAG work as one project that becomes more capable in small, explainable versions:
+
+1. **Retrieval-only baseline:** load local text files, split them into passages, rank/select keyword matches, and print the selected passages. Do not call a model yet. Make retrieval visible and understandable.
+2. **Basic RAG:** construct a prompt from the question and retrieved passages, call the Part 4 API helper, and inspect the answer.
+3. **Inspectable RAG:** expose the retrieved passages and source names, detect when retrieval returns no useful evidence, and inspect unsupported answers. Keep enough visibility to explain what the system did.
+4. **Semantic retrieval:** compare keyword matching with embeddings and similarity search. Add a vector index only when its purpose is understood and the simpler baseline provides a meaningful comparison.
+5. **Usable application:** add a modest user interface, document ingestion/management, input validation, helpful errors, and a repeatable evaluation procedure.
+
+For every version, the learner should:
+- draw or update a component diagram;
+- trace one question from input through retrieval, prompt construction, API request, and answer;
+- inspect the actual retrieved evidence rather than judging only the final answer;
+- deliberately test a failure case, explain a hypothesis for it, and change one thing at a time;
+- write down what is known, what is uncertain, and what the next improvement should be.
+
+The current Exercises 30–35 remain the foundation for Versions 1 and 2. Follow-on exercises can extend the project incrementally; they should not replace or delete the current course. Before any new non-standard dependency is introduced, document its purpose, installation command, and the point in the course where it becomes necessary in the root README and setup guide.
+
 ## Modest hardware guidance
 
 - Parts 1 and 4–5 should be lightweight locally; Part 4–5 need an internet connection and a provider API key.
