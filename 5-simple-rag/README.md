@@ -31,6 +31,36 @@ Send prompt to the model API
 Display the returned response
 ```
 
+## Why Part 4 comes before this part
+
+The dedicated API section is intentional. It teaches how a local Python program sends a request to a remote model, handles authentication, reads a response, and deals with errors. This RAG project reuses that knowledge instead of hiding the model call inside a magic helper. Your computer runs document processing and retrieval; the API provider runs generation.
+
+## The project grows in five versions
+
+The current Exercises 30–35 are the foundation, not the whole journey. Keep them and extend the same project step by step:
+
+### Version 1 — Retrieval only
+
+Load local documents, split them into passages, run keyword retrieval, and display the selected passages and source names. Do not call a model yet. Learn to answer: *Why did the retriever select this passage, and did it contain the needed evidence?*
+
+### Version 2 — Basic RAG
+
+Use the selected passages to build a prompt with the question, call the Part 4 API helper, and inspect the answer. Trace one question through the complete pipeline.
+
+### Version 3 — Inspectable RAG
+
+Make the retrieved passages and source names visible. Handle empty or weak retrieval explicitly, and examine whether answer claims are supported by the retrieved text. The goal is to make the system explainable and debuggable.
+
+### Version 4 — Semantic RAG
+
+Add embeddings and similarity-based retrieval, then compare it with keyword matching using the same questions and documents. A vector database is optional; first understand what embeddings and similarity scores contribute. Any new external library must be documented in the root README and setup guide, including its purpose and installation command, before the learner reaches the lesson that needs it.
+
+### Version 5 — Usable application
+
+Add a simple interface, document ingestion or management, validation, useful error messages, and a repeatable evaluation set. Keep the earlier versions as baselines so you can tell whether each improvement actually helps.
+
+For every version, draw the component diagram, trace one question from input to answer, inspect the actual evidence, and deliberately investigate at least one failure. Examples include a question whose answer is absent, wording that keyword matching misses, irrelevant retrieved passages, unsupported claims, and an unavailable API.
+
 ## Exercise path
 
 | Exercise | Idea |
