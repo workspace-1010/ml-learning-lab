@@ -47,6 +47,8 @@ python -m pip install -e ".[pretrained]"
 
 Part 3 uses those same libraries and the same DistilGPT2 model. **No additional library or model download is required** if Part 2 is already set up. If you skipped Part 2, follow its setup instructions first.
 
+When you reach Part 4, install the optional Gemini SDK with `python -m pip install -e ".[api]"`. Follow the [Part 4 setup guide](4-model-apis/README.md) and do not enable paid billing for this course.
+
 ## Part 1 — First ML programs
 
 | Exercise | Program | Idea |
