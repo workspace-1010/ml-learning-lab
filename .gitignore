@@ -8,3 +8,5 @@ venv/
 models/
 checkpoints/
 data/private/
+data/mnist/
+artifacts/mnist_numpy.npz
