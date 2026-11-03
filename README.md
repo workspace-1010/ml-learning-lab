@@ -161,6 +161,8 @@ Use fictional local text files as a knowledge base, retrieve passages with keywo
 | 33 | [Build the prompt](5-simple-rag/33_build_rag_prompt.py) | Combine evidence and the question |
 | 34 | [Generate with RAG](5-simple-rag/34_ask_gemini_with_rag.py) | Call the API using retrieved context |
 | 35 | [Test RAG limits](5-simple-rag/35_test_rag_limits.py) | Inspect retrieval and unsupported-answer failures |
+| 36 | [Compare semantic retrieval](5-simple-rag/36_semantic_retrieval.py) | Compare keyword matching with embedding similarity (optional API-backed extension) |
+| 37 | [Build a RAG CLI app](5-simple-rag/37_rag_cli_app.py) | Turn the pipeline into an interactive app with source inspection and error handling |
 
 | Exercise | Program | Idea |
 |---:|---|---|
@@ -171,7 +173,7 @@ Use fictional local text files as a knowledge base, retrieve passages with keywo
 | 34 | Generate with RAG | Call the model API using retrieved context |
 | 35 | Test failures | Compare results and inspect unsupported answers |
 
-Start with keyword retrieval so the learner can understand the complete RAG process before learning embeddings or vector databases.
+Start with keyword retrieval so the learner can understand the complete RAG process before learning embeddings or vector databases. Then progress through five versions: retrieval only, basic RAG, inspectable RAG, semantic RAG, and a usable interactive application. See the [Part 5 guide](5-simple-rag/README.md) for the staged path. Exercise 36 uses the existing Google Gen AI SDK for embeddings, so it introduces no additional Python package.
 
 ## The RAG learning path: from exercises to an application
 
