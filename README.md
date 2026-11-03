@@ -1,6 +1,6 @@
 # ML Learning Lab
 
-An exercise-first path to **basic machine learning and understanding a pretrained language model from the inside**.
+An exercise-first path to **basic machine learning, understanding a pretrained language model, and assembling a tiny inference engine**.
 
 The format is inspired by the structure of beginner-friendly programming courses such as Codédex: numbered topic folders, one small runnable program per exercise, and a single index that helps you follow the sequence. The code and explanations here are original; this is not a copy of another course.
 
@@ -8,9 +8,11 @@ The format is inspired by the structure of beginner-friendly programming courses
 
 **Part 1 — First ML programs:** prepare examples, separate features and targets, split data, create and fit a model, make predictions, measure error, classify examples, and notice overfitting.
 
-**Part 2 — Assemble and inspect DistilGPT2:** tokenize text, inspect the model configuration and files, load the actual checkpoint, examine learned parameters, run the raw forward pass, inspect next-token scores, and write a small autoregressive generation loop.
+**Part 2 — Assemble and inspect DistilGPT2:** tokenize text, inspect configuration and files, load the checkpoint, examine learned parameters, run the forward pass, inspect next-token scores, and write a token-by-token generation loop.
 
-The target is to understand useful APIs and how the pieces fit together—not to memorize every function or train an LLM from scratch.
+**Part 3 — Build a tiny inference engine:** define a request, wrap model use behind an interface, control decoding, enforce stop/context limits, use a KV cache, and stream output token by token.
+
+The target is to understand useful APIs and how the pieces fit together—not to memorize every function, build a production server, or train an LLM from scratch.
 
 ## Start here: setup in VS Code
 
@@ -43,7 +45,7 @@ When you reach Part 2, install the additional libraries (PyTorch and Transformer
 python -m pip install -e ".[pretrained]"
 ```
 
-**Model download:** the first relevant Part 2 exercise downloads DistilGPT2's tokenizer/configuration files and the approximately 353 MB `model.safetensors` checkpoint from [Hugging Face](https://huggingface.co/distilbert/distilgpt2). Normally you do not need to download them manually in a browser. Exercise 12 explicitly downloads and lists the selected files. An internet connection is needed on the first run; files are reused from the local cache afterward. Details and troubleshooting are in the [setup guide](docs/setup-guide.md).
+Part 3 uses those same libraries and the same DistilGPT2 model. **No additional library or model download is required** if Part 2 is already set up. If you skipped Part 2, follow its setup instructions first.
 
 ## Part 1 — First ML programs
 
@@ -75,6 +77,27 @@ We use one specific open model throughout: **[`distilbert/distilgpt2`](https://h
 | 17 | [Generate token by token](2-distilgpt2/17_generate_one_token_at_a_time.py) | Implement greedy autoregressive decoding |
 | 18 | [Explore sampling](2-distilgpt2/18_explore_sampling.py) | Turn scores into a sampled next token |
 
+## Part 3 — Build a tiny inference engine
+
+Part 2 showed how the model predicts tokens. Part 3 wraps that process into a component an application can call. The lessons introduce request validation, a reusable engine interface, decoding policies, stopping/context limits, KV caching, and streaming.
+
+| Exercise | Program | Idea |
+|---:|---|---|
+| 19 | [Define a request](3-inference-engine/19_define_a_request.py) | Make input and generation settings explicit |
+| 20 | [Build a tiny engine](3-inference-engine/20_build_a_tiny_engine.py) | Encapsulate loading and generation behind one interface |
+| 21 | [Control decoding](3-inference-engine/21_control_decoding.py) | Temperature and top-k sampling |
+| 22 | [Stop safely](3-inference-engine/22_stop_safely.py) | End tokens and model context limits |
+| 23 | [Reuse computation](3-inference-engine/23_reuse_computation.py) | Reuse past key/value states with a KV cache |
+| 24 | [Stream the response](3-inference-engine/24_stream_the_response.py) | Show output incrementally as tokens arrive |
+
+Run one exercise at a time from the repository root, for example:
+
+```bash
+python 3-inference-engine/19_define_a_request.py
+```
+
+For model exercises, use the same activated Python environment and keep prompts/generation lengths short on a 4 GB RAM computer. Read [the Part 3 guide](3-inference-engine/README.md) first.
+
 Every model exercise uses direct Transformers APIs such as `AutoTokenizer` and `AutoModelForCausalLM`. **No `pipeline()` is used**, because loading, tokenization, logits and generation are what we want to learn.
 
 ## Designed for a modest computer
@@ -86,7 +109,8 @@ Start with CPU inference, short prompts, and small generation lengths. The check
 - [Course design](docs/course-design.md)
 - [How to study](docs/how-to-study.md)
 - [Setup guide](docs/setup-guide.md)
+- [Learning map](docs/learning-map.md)
 - [Glossary](docs/glossary.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 
-No RAG or vector-database section is included in this version. The goal is to understand the model itself before adding another system around it.
+No RAG or vector-database section is included in this version. The goal is to understand ML, the model, and the inference path before adding another system around it.
