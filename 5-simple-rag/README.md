@@ -42,13 +42,17 @@ Display the returned response
 | 34 | Send the RAG prompt through the Part 4 API helper |
 | 35 | Compare results and test failure cases |
 
+## Run the exercises
+
+Run commands from the repository root. First create fictional sample documents: `python 5-simple-rag/30_create_knowledge_base.py`. Inspect splitting with `python 5-simple-rag/31_split_documents.py`, then try `python 5-simple-rag/32_keyword_retrieval.py` and `python 5-simple-rag/33_build_rag_prompt.py`. After completing the [Part 4 API setup](../4-model-apis/README.md), run `python 5-simple-rag/34_ask_gemini_with_rag.py` and `python 5-simple-rag/35_test_rag_limits.py`. The full example requires internet, a personal key, and available free-tier quota. Do not enable paid billing for this course; continue with offline exercises if the live call is unavailable.
+
 ## Why start with keyword search?
 
 Keyword search keeps the first RAG implementation small and understandable. The learner can see exactly why a passage was selected before adding embeddings or a vector database. Those can be optional extensions after the basic system works.
 
 ## Hardware and cost
 
-The documents, retrieval code, and prompt construction run on the learner's PC. The provider runs the language model. A small keyword-based example should be lightweight, including on a 4 GB RAM computer, but API requests need internet access and may incur charges. Keep the API key in an environment variable, never in the repository.
+The documents, retrieval code, and prompt construction run on the learner's PC. The provider runs the language model. A small keyword-based example is lightweight, including on a 4 GB RAM computer, but API requests need internet and available free-tier quota. The Gemini free tier may use submitted content to improve Google's products. Use only fictional/public sample documents and keep the API key in an environment variable, never in the repository. Do not enable paid billing to complete the course.
 
 ## Important limitation
 
