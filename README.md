@@ -173,6 +173,22 @@ Use fictional local text files as a knowledge base, retrieve passages with keywo
 
 Start with keyword retrieval so the learner can understand the complete RAG process before learning embeddings or vector databases.
 
+## The RAG learning path: from exercises to an application
+
+**The existing five parts stay in place.** The dedicated API section is intentional: it teaches the boundary between your local Python application and a remotely hosted model, which Part 5 then uses. We will build on the course rather than remove or replace its lessons.
+
+Part 5 is the beginning of a continuous project, not the point where you are expected to magically know how to build a full application. Work through these versions in order:
+
+1. **Version 1 — Retrieval only:** use local documents, split them into passages, retrieve likely matches, and print the selected passages. No model call is needed yet. You should be able to explain why each passage was selected.
+2. **Version 2 — Basic RAG:** pass the retrieved passages and question to the Part 4 model API, then inspect the generated answer. Trace the entire path from question to response.
+3. **Version 3 — Inspectable RAG:** display the sources and passages used, make it clear when nothing relevant was found, and examine answers that are unsupported by the evidence. The system should be debuggable, not a black box.
+4. **Version 4 — Semantic RAG:** improve retrieval with embeddings and similarity search. Learn what this changes compared with keyword matching before considering a vector database.
+5. **Version 5 — Usable application:** add a simple interface, document handling, clear error messages, and a repeatable way to evaluate retrieval and answers.
+
+For **every version**, draw the architecture, trace one question through every step, and deliberately try a failure case. Keep notes on what failed, why you think it failed, and what evidence would confirm your explanation. The aim is not just to finish the exercises; it is to become able to design, explain, debug, and extend a RAG application independently.
+
+The first version stays lightweight and uses the current documented dependencies. New external libraries—such as an embedding library or vector-store package—must be added to the root library table and setup instructions **before** a later lesson asks learners to install them. Embeddings and vector databases are later extensions, not requirements for the first working RAG pipeline.
+
 ## Designed for a modest computer
 
 Start with CPU inference, short prompts, and small generation lengths. The checkpoint is about 353 MB, but the full program uses more RAM because Python, PyTorch and intermediate tensors also require memory. Four GB is a constrained target, so close memory-heavy programs. Do not download every alternate model export, and never commit weights or model caches to this repository.
