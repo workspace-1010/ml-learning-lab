@@ -27,7 +27,7 @@ The target is to understand useful APIs and how the pieces fit together—not to
 | Part 1 — MNIST project | NumPy | Store image arrays and implement the neural network, backpropagation and gradient-descent updates | Basic setup |
 | Part 1 — MNIST project | Matplotlib | Display test digits and model predictions | Optional: install with `python -m pip install -e ".[visual]"` |
 | Part 1 — MNIST project | MNIST dataset | 28×28 handwritten digit images and labels; downloaded automatically from a public Google-hosted mirror | Exercise 01 downloads it on first run; internet required |
-| Part 1 — maze project (planned) | Python standard library | Represent the grid, actions, rewards and training loop | No extra install planned |
+| Part 1 — maze project | Python standard library (`random`, `argparse`, `collections`, `dataclasses`) | Train a tabular Q-learning agent in a maze using actions and rewards | No extra install needed |
 | Part 2 — pretrained model | PyTorch | Runs tensor operations and the neural network computations | Install `.[pretrained]` |
 | Part 2 — pretrained model | Hugging Face Transformers | Loads the tokenizer, model architecture and pretrained checkpoint | Install `.[pretrained]` |
 | Parts 2–3 — model files | Hugging Face Hub (installed as a dependency) | Downloads and caches model files | Installed with the model dependencies |
@@ -35,7 +35,7 @@ The target is to understand useful APIs and how the pieces fit together—not to
 | Part 5 — simple RAG | Python standard library | Reads local text files and builds the prompt | No extra install planned |
 | Part 5 — simple RAG | Google Gen AI SDK (`google-genai`) | Sends retrieved passages and a question to the hosted model | Same optional `.[api]` install as Part 4 |
 
-The MNIST project is now available in [`1-first-ml/mnist/`](1-first-ml/mnist/README.md). The maze-learning project is the next planned project; it will be documented and implemented separately after the MNIST project is developed further. No library is required just because it is popular: we add dependencies only when the project needs them and explain their role.
+The MNIST project is available in [`1-first-ml/mnist/`](1-first-ml/mnist/README.md), and the maze reinforcement-learning project is available in [`1-first-ml/maze/`](1-first-ml/maze/README.md). The maze agent uses only Python's standard library. No library is required just because it is popular: we add dependencies only when a project needs them and explain their role.
 
 ## Start here: setup in VS Code
 
@@ -76,7 +76,7 @@ When you reach Part 4, install the optional Gemini SDK with `python -m pip insta
 
 ## Part 1 — Train a neural network on MNIST
 
-The original exercises 01–09 remain as a foundation for datasets, features, fitting, prediction, evaluation, classification and overfitting. The first hands-on project now trains a small neural network **from scratch with NumPy** to recognize handwritten digits. It includes an automatic dataset downloader, training with backpropagation and gradient descent, and a visualization of test predictions. Start with the [MNIST project guide](1-first-ml/mnist/README.md). After this project, the next planned project is a maze agent that learns from actions and rewards.
+The original exercises 01–09 remain as a foundation for datasets, features, fitting, prediction, evaluation, classification and overfitting. The first hands-on project trains a small neural network **from scratch with NumPy** to recognize handwritten digits. It includes automatic or manual dataset acquisition, training with backpropagation and gradient descent, and a visualization of test predictions. Start with the [MNIST project guide](1-first-ml/mnist/README.md). The second project trains a maze agent using reinforcement learning and Q-learning. Start with the [maze project guide](1-first-ml/maze/README.md).
 
 | Exercise | Program | Idea |
 |---:|---|---|
