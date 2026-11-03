@@ -104,4 +104,11 @@ Run one numbered file at a time from the repository root, for example:
 python 2-distilgpt2/10_tokenize_text.py
 ```
 
+Part 3 reuses the same dependencies and model. If you completed Part 2, there is **no extra package or model download** just for the inference-engine lessons. The first model run in Part 3 can still contact Hugging Face if a required file is missing from your cache. Run one exercise at a time:
+
+```bash
+python 3-inference-engine/19_define_a_request.py
+python 3-inference-engine/20_build_a_tiny_engine.py
+```
+
 Do not use `pipeline()` in this course: the goal is to see the tokenizer, model object, weights, forward pass, and token-selection loop directly.
