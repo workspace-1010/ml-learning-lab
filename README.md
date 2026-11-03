@@ -62,7 +62,9 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
 
-For the MNIST visualization, optionally install Matplotlib with `python -m pip install -e ".[visual]"`. Exercises 01–02 in the MNIST project need no additional library beyond NumPy.\n\nWhen you reach Part 2, install the additional libraries (PyTorch and Transformers):
+For the MNIST visualization, optionally install Matplotlib with `python -m pip install -e ".[visual]"`. Exercises 01–02 in the MNIST project need no additional library beyond NumPy.
+
+When you reach Part 2, install the additional libraries (PyTorch and Transformers):
 
 ```bash
 python -m pip install -e ".[pretrained]"
