@@ -1,13 +1,16 @@
 # Contributing
 
-Keep this repository focused on three outcomes: write basic ML code, load and inspect a pretrained model, and assemble a basic RAG pipeline.
+Keep contributions beginner-friendly and focused on the two course goals: basic ML and understanding a specific pretrained language model.
 
-A useful lesson includes a plain-language mental model, a complete runnable example, explanations of key inputs/outputs, a prediction-first experiment, understanding questions, troubleshooting, and links to official documentation.
+## Exercise style
 
-Quality checklist:
-- Prefer simple, CPU-friendly examples.
-- State Python and dependency requirements.
-- Do not commit model weights, private data, API keys or environment files.
-- Explain model/data licenses and download or memory requirements.
-- Verify commands and expected output.
-- Avoid a framework when a small function teaches the concept more clearly.
+- Use one short, runnable Python file per idea.
+- Number files in learning order and keep the root README as the exercise index.
+- Put a short challenge and the intended observation near the top of each source file.
+- Prefer direct inputs/outputs and explicit print statements over abstractions.
+- Do not require a GPU, API key, paid service, RAG stack or downloaded dataset for Part 1.
+- For model lessons, keep the fixed model ID `distilbert/distilgpt2` unless there is a carefully explained reason to change it.
+- Never commit model weights, caches, private data, API keys or virtual environments.
+- Check upstream model license and resource requirements before proposing a different checkpoint.
+
+The reference programs are original examples. Do not copy third-party course text or solution code into this repository.

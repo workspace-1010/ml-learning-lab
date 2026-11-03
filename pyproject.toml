@@ -4,16 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ml-learning-lab"
-version = "0.1.0"
-description = "An example-first path through basic ML, pretrained models, and RAG."
+version = "0.2.0"
+description = "Exercise-first learning for basic ML and pretrained language models."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["numpy>=1.26,<3", "scikit-learn>=1.4,<2"]
+dependencies = [
+  "numpy>=1.26,<3",
+  "scikit-learn>=1.4,<2",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9"]
-pretrained = ["transformers>=4.44,<5", "torch>=2.3"]
-rag = ["sentence-transformers>=3,<6", "transformers>=4.44,<5", "torch>=2.3"]
+pretrained = [
+  "transformers>=4.44,<5",
+  "torch>=2.3",
+]
 
 [tool.setuptools]
 packages = []

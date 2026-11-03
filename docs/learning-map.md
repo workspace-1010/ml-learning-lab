@@ -1,20 +1,19 @@
 # Learning map
 
-## Finish line
+## Part 1 — Basic ML
 
-The learner can write a basic ML program, load and run a pretrained open model using existing libraries, and implement a small RAG workflow. They can identify components, choose APIs, inspect outputs and debug common failures.
+Data → features and targets → train/test split → model object → fit → predict → metric → compare a model's training performance with its test performance.
 
-## Sequence
+This part uses small local datasets and scikit-learn. It should run on CPU without downloading model weights.
 
-1. **Foundations:** Python environments, imports, files, functions, arrays and Git.
-2. **Basic ML:** features and target, train/test split, estimator, fit, predict and metrics.
-3. **Model components:** arrays/tensors, parameters versus hyperparameters, configuration and learned weights.
-4. **Pretrained models:** tokenizer, model files, from_pretrained(), inference and resource constraints.
-5. **RAG:** documents, chunks, embeddings, similarity search, prompt context and generation.
-6. **Capstone:** answer questions from a small document set and show the passages used.
+## Part 2 — One pretrained language model
 
-Do not start by training an LLM from scratch or deriving every transformer equation. Add theory when it helps explain a function or diagnose a result.
+The fixed checkpoint is `distilbert/distilgpt2`. Follow the exercises in `2-distilgpt2/README.md`:
 
-## Definition of done
+Text → tokenizer → token IDs → architecture + config + checkpoint weights → forward pass → logits → next-token choice → repeated generation.
 
-A learner can explain the pipeline, run and modify examples, name key functions, inspect inputs/outputs, and identify at least one limitation of each approach.
+A learner should be able to identify the model's main components, explain what the raw output means, and write a short next-token loop without using `pipeline()`.
+
+## Deliberately out of scope
+
+This version does not cover RAG, vector databases, fine-tuning or training a transformer from random initialization. Those are useful topics, but they would dilute the current goal of understanding and using a pretrained model.

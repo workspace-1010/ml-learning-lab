@@ -1,105 +1,78 @@
 # ML Learning Lab
 
-A practical, example-first course for learning three things: write basic ML code with libraries, load and inspect a pretrained open-source language model, and build a basic retrieval-augmented generation (RAG) pipeline.
+An exercise-first path to **basic machine learning and understanding a pretrained language model from the inside**.
 
-## Learning outcomes
+The format is inspired by the structure of beginner-friendly programming courses such as Codédex: numbered topic folders, one small runnable program per exercise, and a single index that helps you follow the sequence. The code and explanations here are original; this is not a copy of another course.
 
-1. Prepare data, train a basic scikit-learn model with `fit()`, predict with `predict()`, and evaluate on held-out data.
-2. Explain model configuration, tokenizer, architecture and learned weights; load a pretrained model with existing libraries and run inference.
-3. Build a basic RAG pipeline: documents → chunks → embeddings → retrieval → context + question → language model → answer.
-4. Explain the purpose and inputs/outputs of key functions, then modify working examples with a clear hypothesis.
+## What you will learn
 
-This is not a course on training a large language model from scratch or implementing transformers from scratch. Learn the mental model and useful APIs, then connect the parts into working programs.
+**Part 1 — First ML programs:** prepare examples, separate features and targets, split data, create and fit a model, make predictions, measure error, classify examples, and notice overfitting.
 
-## Learning path
+**Part 2 — Assemble and inspect DistilGPT2:** tokenize text, inspect the model configuration and files, load the actual checkpoint, examine learned parameters, run the raw forward pass, inspect next-token scores, and write a small autoregressive generation loop.
 
-| Stage | Build | Main tools |
-|---|---|---|
-| 0. Foundations | Reproducible Python environment and Git workflow | Python, venv, pip, Git |
-| 1. Basic ML | Train, predict, and evaluate a small model | scikit-learn |
-| 2. Model components | Inspect arrays, tensors, parameters and configuration | NumPy; optional PyTorch |
-| 3. Pretrained models | Load a small model, inspect tokenizer/config and run inference | Hugging Face Transformers |
-| 4. RAG | Retrieve passages and provide them as context to an LLM | embeddings, vector search, an LLM |
-| 5. Capstone | A small document Q&A application with source passages | Earlier components |
+The target is to understand useful APIs and how the pieces fit together—not to memorize every function or train an LLM from scratch.
 
-## Lesson design
+## Start here
 
-Each lesson should have a clear mental model, a complete runnable example, a trace of important inputs and outputs, experiments, understanding questions, and troubleshooting notes. Prefer small examples and explicit data flow over unnecessary abstractions.
+1. Install the basic dependencies:
+   ```bash
+   python -m venv .venv
+   ```
+   On Windows, activate with `.venv\\Scripts\\Activate.ps1`; on macOS/Linux, use `source .venv/bin/activate`.
+   ```bash
+   python -m pip install --upgrade pip
+   python -m pip install -e ".[dev]"
+   ```
+2. Open [How to study](docs/how-to-study.md).
+3. Run the numbered exercises in order.
 
-## Repository map
+## Part 1 — First ML programs
 
-- `docs/` — setup, learning map, glossary and Git workflow.
-- `lessons/00-foundations/` — environment and reproducibility.
-- `lessons/01-basic-ml/` — first model and evaluation.
-- `lessons/02-model-components/` — weights, parameters and tensors.
-- `lessons/03-pretrained-models/` — configuration, tokenizer, loading and inference.
-- `lessons/04-rag/` — document loading, chunking, embeddings, retrieval and generation.
-- `lessons/05-capstone/` — final project specification.
-- `tests/` — small automated checks where useful.
+| Exercise | Program | Idea |
+|---:|---|---|
+| 01 | [The dataset](1-first-ml/01_the_dataset.py) | Inspect examples before fitting |
+| 02 | [Features and targets](1-first-ml/02_features_and_targets.py) | Separate input data from the value to predict |
+| 03 | [Split the data](1-first-ml/03_split_the_data.py) | Hold back examples for testing |
+| 04 | [Create a model](1-first-ml/04_create_a_model.py) | Model object vs. trained model |
+| 05 | [Fit the model](1-first-ml/05_fit_the_model.py) | Learn parameters from data |
+| 06 | [Make predictions](1-first-ml/06_make_predictions.py) | Predict values for new inputs |
+| 07 | [Measure error](1-first-ml/07_measure_error.py) | Evaluate held-out predictions |
+| 08 | [Classify flowers](1-first-ml/08_classify_flowers.py) | Predict categories |
+| 09 | [Spot overfitting](1-first-ml/09_spot_overfitting.py) | Compare training and test performance |
 
-## Quick start
+## Part 2 — DistilGPT2, without a pipeline
 
-Use Python 3.10 or newer. Create and activate a virtual environment before installing dependencies.
+We use one specific open model throughout: **[`distilbert/distilgpt2`](https://huggingface.co/distilbert/distilgpt2)**. Its model card lists 82 million parameters and the Apache 2.0 license. The standard Safetensors weights file is approximately 353 MB. It is a small English text-completion model, not a chat assistant. See [Part 2's guide](2-distilgpt2/README.md) before running these exercises.
 
-**Windows PowerShell**
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
-python lessons/01-basic-ml/01-first-model/example.py
-```
-
-**macOS / Linux**
+Install the optional dependencies:
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
-python lessons/01-basic-ml/01-first-model/example.py
+python -m pip install -e ".[pretrained]"
 ```
 
-Pretrained-model and RAG lessons may require extra dependencies and download model files on first use. Their lesson pages should explain disk, memory, internet and license requirements first. Keep examples CPU-friendly where possible.
+| Exercise | Program | Idea |
+|---:|---|---|
+| 10 | [Tokenize text](2-distilgpt2/10_tokenize_text.py) | Text becomes token IDs |
+| 11 | [Read the configuration](2-distilgpt2/11_read_the_configuration.py) | Inspect the model blueprint |
+| 12 | [List model files](2-distilgpt2/12_list_the_model_files.py) | Distinguish weights, config and tokenizer files |
+| 13 | [Load the weights](2-distilgpt2/13_load_the_weights.py) | Construct the architecture and load its checkpoint |
+| 14 | [Inspect the weights](2-distilgpt2/14_inspect_the_weights.py) | Names, shapes, dtypes and parameter counts |
+| 15 | [Run the forward pass](2-distilgpt2/15_run_the_forward_pass.py) | Inspect raw logits and their dimensions |
+| 16 | [Choose the next token](2-distilgpt2/16_choose_the_next_token.py) | Read the top candidate scores |
+| 17 | [Generate token by token](2-distilgpt2/17_generate_one_token_at_a_time.py) | Implement greedy autoregressive decoding |
+| 18 | [Explore sampling](2-distilgpt2/18_explore_sampling.py) | Turn scores into a sampled next token |
 
-## Recommended study loop
+Every model exercise uses direct Transformers APIs such as `AutoTokenizer` and `AutoModelForCausalLM`. **No `pipeline()` is used**, because loading, tokenization, logits and generation are what we want to learn.
 
-1. Run the reference example unchanged.
-2. Explain what each important function does and returns.
-3. Predict what a small change will do.
-4. Create an experiment branch, change one thing, run it, and record the result.
-5. Answer the understanding questions before moving on.
+## Designed for a modest computer
 
-You do not need to memorize every API. Learn how to find the right function, inspect inputs and outputs, and understand how components connect.
+Start with CPU inference, short prompts, and small generation lengths. A 353 MB checkpoint does not mean the entire program uses only 353 MB of RAM: Python, PyTorch and intermediate tensors also require memory. Four GB is a constrained target, so close memory-heavy programs. Do not download every alternate model export, and never commit weights or model caches to this repository.
 
-## Git workflow
+## Course design and study method
 
-Fork the repository, clone your fork, and make a branch for an experiment:
+- [Course design](docs/course-design.md)
+- [How to study](docs/how-to-study.md)
+- [Setup guide](docs/setup-guide.md)
+- [Glossary](docs/glossary.md)
+- [Contribution guidelines](CONTRIBUTING.md)
 
-```bash
-git clone https://github.com/YOUR-USERNAME/ml-learning-lab.git
-cd ml-learning-lab
-git switch -c experiment/first-model
-```
-
-After experimenting:
-
-```bash
-git status
-git diff
-git add .
-git commit -m "Experiment with first ML model"
-git push -u origin experiment/first-model
-```
-
-Do not commit virtual environments, secrets, large model checkpoints, or datasets that should be downloaded separately.
-
-## Scope and responsible use
-
-- Keep examples reproducible, inspectable, and appropriately small.
-- Check model and dataset licenses before use or redistribution.
-- Treat retrieved documents as untrusted input; retrieval does not guarantee correctness.
-- A local RAG demo is a learning project, not a production security design.
-
-## Contributing and license
-
-See `CONTRIBUTING.md` for lesson format and contribution principles. Original code and learning materials are intended to use the MIT License unless otherwise stated. External models, datasets and references retain their own licenses.
+No RAG or vector-database section is included in this version. The goal is to understand the model itself before adding another system around it.
