@@ -28,9 +28,22 @@ An API key is a secret credential that identifies or authorizes the caller. Neve
 | 28 | Send a prompt to a hosted language model |
 | 29 | Handle errors and keep the API call separate from the rest of the program |
 
-## Before you run a model request
+## Provider for this course: Gemini Developer API
 
-Choose a provider that offers a text-generation API and read its current documentation. Providers differ in endpoint URLs, model names, authentication, request formats, free quotas, and pricing. The later exercises should use one provider consistently, configured through environment variables. Do not assume an API is free or that every provider accepts the same request format.
+We use the Gemini Developer API as the course's first provider because Google offers a free tier for selected models, subject to eligibility, quotas, and changing availability. Do not enable paid billing just to finish this course. If the free tier is unavailable or a quota is exhausted, pause live-call exercises and continue with offline exercises. Check the [current pricing and free-tier terms](https://ai.google.dev/gemini-api/docs/pricing) before making requests.
+
+Privacy note: content submitted through the free tier may be used to improve Google's products. Use only fictional or public practice documents. Never send private school records, personal information, passwords, or confidential files. See Google's [API key guidance](https://ai.google.dev/gemini-api/docs/api-key).
+
+## Setup: one account and key per learner
+
+1. Open [Google AI Studio](https://aistudio.google.com/) and sign in with your own account.
+2. Create an API key and follow the current on-screen instructions.
+3. Check that your account has access to a model in the free tier. Examples default to `gemini-2.5-flash`; if unavailable, set `GEMINI_MODEL` to a model currently available to you on the free tier.
+4. Set the key as an environment variable named `GEMINI_API_KEY`. On Windows, use **Edit environment variables for your account**, add a user variable named `GEMINI_API_KEY`, then open a new terminal. On macOS/Linux, you can temporarily use `export GEMINI_API_KEY=your_key` in the current terminal.
+5. From the repository root, install the optional SDK: `python -m pip install -e ".[api]"`.
+6. Check configuration without revealing the secret: `python 4-model-apis/27_environment_variables.py`.
+
+Never paste a real key into code, commit it, share it in screenshots, or use a shared class key. Do not enable paid billing to complete a required exercise. API calls require internet and available quota; the local exercises remain useful when live calls are unavailable.
 
 This part does not require downloading model weights. The local program sends text to the provider and receives a response.
 
