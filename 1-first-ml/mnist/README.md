@@ -13,14 +13,45 @@ This is a learning project, not a state-of-the-art digit recognizer.
 
 ## Where does MNIST come from?
 
-MNIST is a well-known public dataset of handwritten digits created by Yann LeCun and collaborators. The script downloads the four original IDX gzip files from a public Google-hosted mirror of the dataset:
+MNIST is a well-known public dataset of handwritten digits created by Yann LeCun and collaborators. The project uses four IDX gzip files from a public Google-hosted mirror:
 
 - Training images: [train-images-idx3-ubyte.gz](https://storage.googleapis.com/cvdf-datasets/mnist/train-images-idx3-ubyte.gz)
 - Training labels: [train-labels-idx1-ubyte.gz](https://storage.googleapis.com/cvdf-datasets/mnist/train-labels-idx1-ubyte.gz)
 - Test images: [t10k-images-idx3-ubyte.gz](https://storage.googleapis.com/cvdf-datasets/mnist/t10k-images-idx3-ubyte.gz)
 - Test labels: [t10k-labels-idx1-ubyte.gz](https://storage.googleapis.com/cvdf-datasets/mnist/t10k-labels-idx1-ubyte.gz)
 
-You do **not** need to download those four files manually. Exercise 01 downloads them and creates a local `mnist.npz` dataset file. You need an internet connection for the first download. The files are stored under `data/mnist/`, which is ignored by Git; do not upload the dataset to the repository.
+You can get these files in **either of two ways**.
+
+### Option A — Let the Python script download them (recommended for your first run)
+
+Run the downloader from the repository root:
+
+```bash
+python 1-first-ml/mnist/01_download_mnist.py
+```
+
+It downloads any missing raw files, reads them, and creates `data/mnist/mnist.npz`. You need an internet connection for the initial download.
+
+### Option B — Download the files manually
+
+Choose this if you want to download the dataset yourself or learn how the files are organized.
+
+1. Create this folder inside the repository: `data/mnist/raw/`.
+2. Click each of the four links above and save the downloaded file into that folder. Keep the files compressed as `.gz`; **do not unzip or rename them**.
+3. Check that the names match these exactly:
+   - `train-images-idx3-ubyte.gz`
+   - `train-labels-idx1-ubyte.gz`
+   - `t10k-images-idx3-ubyte.gz`
+   - `t10k-labels-idx1-ubyte.gz`
+4. From the repository root, run the same preparation script:
+
+```bash
+python 1-first-ml/mnist/01_download_mnist.py
+```
+
+The script will reuse the four files already in `data/mnist/raw/` instead of downloading them again, then parse them and create `data/mnist/mnist.npz`. Manual downloading does **not** change the training steps.
+
+If your browser saves the files to your usual Downloads folder, move them into `data/mnist/raw/` before running the script. The `data/mnist/` directory is ignored by Git; do not upload the dataset files to the repository.
 
 ## Libraries and tools used
 
@@ -41,14 +72,13 @@ From the repository root, create/activate the course virtual environment and ins
 python -m pip install "matplotlib>=3.8,<4"
 ```
 
-If you prefer to install all optional visual tools later, you can skip this install until Exercise 03. The download and training exercises only need NumPy, which is already part of the basic setup.
+If you prefer to install optional visual tools later, you can skip this install until Exercise 03. The download and training exercises only need NumPy, which is part of the basic setup.
 
 ## Run the project
 
-Run commands from the **repository root**, not from this folder:
+Once `data/mnist/mnist.npz` has been created using Option A or Option B, run these commands from the **repository root**, not from this folder:
 
 ```bash
-python 1-first-ml/mnist/01_download_mnist.py
 python 1-first-ml/mnist/02_train_mnist.py
 python 1-first-ml/mnist/03_visualize_predictions.py
 ```
@@ -74,8 +104,9 @@ The test images are held out from training. Test accuracy is a useful estimate o
 
 ## Troubleshooting
 
-- If download fails, check your internet connection and rerun Exercise 01.
+- If automatic download fails, check your internet connection and rerun Exercise 01.
+- If you downloaded files manually, verify all four are in `data/mnist/raw/`, their names match exactly, and they remain `.gz` files.
 - If training is slow, keep the default 3 epochs and close other heavy applications.
 - If Exercise 03 says the model file is missing, run Exercise 02 first.
 - If Matplotlib is missing, install it with the command above.
-- The data and trained model are local generated files, not source code. They should not be committed to GitHub.
+- Dataset files and trained model weights are generated local files, not source code. They should not be committed to GitHub.
