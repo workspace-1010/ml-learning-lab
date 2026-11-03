@@ -38,6 +38,44 @@ Local documents → small passages → keyword retrieval → question + retrieve
 
 This first implementation deliberately uses keyword matching instead of embeddings or a vector database. That keeps the retrieval step visible and the hardware requirements modest. RAG adds context; it does not guarantee factual answers.
 
+## From the first RAG exercise to an independent application
+
+Keep the five existing course parts. Part 4 is a deliberate bridge: it teaches the request/response boundary and remote inference so the RAG project can run without loading another model on a modest computer.
+
+Build the same RAG project in successive versions:
+
+**Version 1 — Retrieval only**
+
+Local documents → passages → keyword matching → ranked/selected passages → display passages and source names.
+
+No language model or new dependency is needed. The key question is: *Did the retriever find the evidence that answers the question?*
+
+**Version 2 — Basic RAG**
+
+Question → retrieve passages → build a prompt from question + evidence → Part 4 API request → generated answer.
+
+Trace a single request end to end and compare the response with the actual retrieved evidence.
+
+**Version 3 — Inspectable RAG**
+
+Question → retrieve → display evidence + sources → check for weak/empty retrieval → generate → inspect evidence support.
+
+Make it possible to see what the system retrieved and to identify when the answer goes beyond that evidence.
+
+**Version 4 — Semantic RAG**
+
+Documents → chunks → embeddings → similarity search → selected evidence → prompt → model API → answer.
+
+Compare results against keyword retrieval. Introduce embedding and vector-index dependencies only when their role and installation are documented.
+
+**Version 5 — Usable application**
+
+Document input/management → retrieval pipeline → source-aware answer → user interface → useful errors → evaluation records.
+
+This is a learning application, not a production promise. Improve one component at a time and keep the earlier versions available as baselines.
+
+At each version, draw the architecture, follow one question through the components, and intentionally test a failure (for example, a missing answer, irrelevant passage, ambiguous question, API quota error, or unsupported claim). A good final answer alone does not prove the retrieval was good.
+
 ## Deliberately out of scope for the first RAG version
 
 Vector databases, embedding models, fine-tuning, training a transformer from random initialization, and production-grade serving infrastructure. They can be optional extensions after the learner understands the end-to-end flow.
