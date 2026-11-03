@@ -7,6 +7,8 @@
 5. Make one change on your own branch, predict the effect, run it, and record the result.
 6. Explain the concept in your own words before moving on.
 
+For Part 3, draw the request lifecycle before running the code. Try changing one setting at a time: prompt, token budget, temperature, or top-k. For the cache lesson, compare what is sent to the model on the first step with what is sent on later steps. For streaming, notice when the first output becomes visible.
+
 Do not memorize the entire library API. Learn how to identify an object's role, find the right documented method, inspect its inputs and outputs, and connect the steps into a working program.
 
 The code files are reference solutions. Try each task before reading the implementation.
