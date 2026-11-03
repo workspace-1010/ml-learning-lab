@@ -71,10 +71,34 @@ For every version, draw the component diagram, trace one question from input to 
 | 33 | Build a prompt containing the evidence and question |
 | 34 | Send the RAG prompt through the Part 4 API helper |
 | 35 | Compare results and test failure cases |
+| 36 | Compare keyword retrieval with embedding-based semantic retrieval (optional API-backed extension) |
+| 37 | Use the RAG pipeline through an interactive command-line application |
 
 ## Run the exercises
 
-Run commands from the repository root. First create fictional sample documents: `python 5-simple-rag/30_create_knowledge_base.py`. Inspect splitting with `python 5-simple-rag/31_split_documents.py`, then try `python 5-simple-rag/32_keyword_retrieval.py` and `python 5-simple-rag/33_build_rag_prompt.py`. After completing the [Part 4 API setup](../4-model-apis/README.md), run `python 5-simple-rag/34_ask_gemini_with_rag.py` and `python 5-simple-rag/35_test_rag_limits.py`. The full example requires internet, a personal key, and available free-tier quota. Do not enable paid billing for this course; continue with offline exercises if the live call is unavailable.
+Run commands from the repository root. First create fictional sample documents: `python 5-simple-rag/30_create_knowledge_base.py`. Inspect splitting with `python 5-simple-rag/31_split_documents.py`, then try `python 5-simple-rag/32_keyword_retrieval.py` and `python 5-simple-rag/33_build_rag_prompt.py`. After completing the [Part 4 API setup](../4-model-apis/README.md), run `python 5-simple-rag/34_ask_gemini_with_rag.py` and `python 5-simple-rag/35_test_rag_limits.py`. When you understand the baseline, continue to Exercises 36–37. The live examples require internet, a personal key, and available API quota. Do not enable paid billing for this course; continue with offline exercises if live calls are unavailable.
+
+### Version 1 — Retrieval only (Exercises 30–32)
+
+Create the local knowledge base, split it into passages, and inspect keyword matches. Keep the model out of the loop until you can explain why a passage was selected. Deliverable: a question, a visible list of retrieved passages and their source names, and a short note about one query that fails.
+
+### Version 2 — Basic RAG (Exercises 33–34)
+
+Build a prompt from the question and retrieved passages, then call the Part 4 API. Deliverable: trace one question from input through retrieval and prompt construction to the generated response.
+
+### Version 3 — Inspectable RAG (Exercises 34–35)
+
+Inspect the passages printed before generation, check source names, and deliberately ask questions that are not answered in the files. Deliverable: record whether the evidence supports the answer and what happens when retrieval returns no matches. A fluent response is not proof of a correct retrieval.
+
+### Version 4 — Semantic RAG (Exercise 36, optional API-backed extension)
+
+Run `python 5-simple-rag/36_semantic_retrieval.py`. It compares the keyword baseline with embedding-based similarity search using the existing Google Gen AI SDK. No new Python package or vector database is required. The embedding API requires internet, an API key, and available quota. This teaching script recomputes embeddings each run; caching and indexing are later improvements. Compare the retrieved passages rather than assuming the highest score must be right.
+
+### Version 5 — Usable application (Exercise 37)
+
+Run `python 5-simple-rag/37_rag_cli_app.py` for an interactive command-line app. Ask multiple questions in one session; use `/sources`, `/reload`, `/help`, and `/quit`. To update the knowledge base, add or edit fictional/public `.txt` files in `5-simple-rag/sample_docs/`, then use `/reload`. The app displays retrieved evidence and handles request errors without printing secrets.
+
+For every version, draw the component flow, trace one question end to end, and investigate a failure deliberately. Record what you observed, your explanation, and the next change you would try.
 
 ## Why start with keyword search?
 
