@@ -4,7 +4,7 @@
 
 Use the same broad format that makes beginner exercise repositories approachable: numbered topic folders, short numbered source files, one concrete idea per program, and a README that acts as a navigable exercise index. This repository is inspired by the *structure* of Codédex's Python 101 and C++ 101 exercises; it does not copy their lesson text or code.
 
-The examples here are standalone solutions/reference implementations. Learners should first predict the output or attempt the task in a Git branch, then run the reference file and compare.
+The examples here are standalone solutions/reference implementations. Learners should first predict the output or attempt the task in a Git branch, then run the reference file and compare. The goal is confidence through understanding the complete path, not expert-level optimization or an overwhelming catalog of tools.
 
 ## Finish line
 
@@ -13,10 +13,13 @@ The learner can:
 - explain features, targets, train/test split, fitting, prediction, metrics and basic overfitting;
 - load one specific pretrained transformer and its tokenizer without using `pipeline()`;
 - identify the roles of configuration, tokenizer assets, architecture and checkpoint weights;
-- inspect learned parameter names and shapes, inspect the forward-pass logits, and understand how next-token generation works;
-- write a small token-by-token generation loop using the model's raw output.
+- inspect learned parameter names and shapes, inspect forward-pass logits, and explain next-token generation;
+- write a short token-by-token generation loop;
+- describe an inference request's lifecycle from prompt to returned text;
+- wrap model use behind a small interface and validate request settings;
+- explain decoding choices, stopping conditions, the model's context budget, KV caching, and streaming output.
 
-This course intentionally excludes RAG, vector databases, fine-tuning and training a language model from scratch. Model assembly and inference alone are a substantial goal.
+This course intentionally excludes RAG, vector databases, fine-tuning, training a language model from scratch, and production-grade serving. Those are valuable next steps, but understanding the basic inference path is already a meaningful finish line.
 
 ## Course shape
 
@@ -26,9 +29,20 @@ Short scripts introduce data, features/targets, splitting data, creating a model
 
 ### Part 2 — Build a mental model of DistilGPT2
 
-Use the fixed model ID `distilbert/distilgpt2`, which is a compact 82M-parameter GPT-2-style language model. Load it with `AutoTokenizer` and `AutoModelForCausalLM`, not `pipeline()`. The standard safetensors checkpoint is about 353 MB. It is a base English text-completion model, not an instruction-tuned assistant.
+Use the fixed model ID `distilbert/distilgpt2`, a compact 82M-parameter GPT-2-style language model. Load it with `AutoTokenizer` and `AutoModelForCausalLM`, not `pipeline()`. The standard safetensors checkpoint is about 353 MB. It is a base English text-completion model, not an instruction-tuned assistant.
 
 Exercises progress from tokenization and configuration to checkpoint files, model parameters, the forward pass, logits, choosing one next token, manual greedy generation and sampling. The last exercises build on concepts shown by earlier files.
+
+### Part 3 — Assemble a tiny inference engine
+
+Part 2 explains how the model works. Part 3 makes the surrounding program visible: validate a request, tokenize its prompt, run the model, choose tokens according to a decoding policy, stop within explicit limits, and return decoded text. A small class provides an engine-like interface without hiding the underlying model APIs.
+
+Then the lessons show three ideas that matter in real inference systems:
+- **KV cache:** reuse past attention key/value states instead of recalculating the entire prompt at every token;
+- **context and stop budgets:** constrain the sequence length and stop at end-of-sequence or the configured token limit;
+- **streaming:** make output visible as tokens arrive instead of waiting for the whole continuation.
+
+These are teaching examples, not a production inference server. Batching, request queues, concurrency, GPU scheduling, quantization, telemetry, and multi-user serving are intentionally out of scope.
 
 ## The model is specific on purpose
 
@@ -53,4 +67,4 @@ Each source file is a small, runnable reference. Files are grouped by topic and 
 
 ## Why no pipeline?
 
-The high-level Transformers `pipeline()` API hides loading, tokenization and output processing. Here those steps are the lesson, so examples use direct tokenizer and model APIs. A later example manually selects next tokens from logits so learners can see the autoregressive loop.
+The high-level Transformers `pipeline()` API hides loading, tokenization and output processing. Here those steps are the lesson, so examples use direct tokenizer and model APIs. The tiny engine class provides a cleaner interface while leaving those direct APIs visible.
