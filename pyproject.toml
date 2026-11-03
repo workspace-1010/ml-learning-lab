@@ -20,6 +20,7 @@ pretrained = [
   "torch>=2.3",
 ]
 api = ["google-genai>=1.0,<2"]
+visual = ["matplotlib>=3.8,<4"]
 
 [tool.setuptools]
 packages = []
