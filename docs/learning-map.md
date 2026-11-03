@@ -76,6 +76,18 @@ This is a learning application, not a production promise. Improve one component 
 
 At each version, draw the architecture, follow one question through the components, and intentionally test a failure (for example, a missing answer, irrelevant passage, ambiguous question, API quota error, or unsupported claim). A good final answer alone does not prove the retrieval was good.
 
+## Part 5 implementation map
+
+The five project versions are connected to concrete exercises:
+
+- **Version 1 — Retrieval only:** Exercises 30–32 create local documents, split them, and retrieve keyword matches without a model call.
+- **Version 2 — Basic RAG:** Exercises 33–34 build the evidence prompt and call the Part 4 API.
+- **Version 3 — Inspectable RAG:** Exercises 34–35 expose retrieved evidence and investigate missing or unsupported answers.
+- **Version 4 — Semantic RAG:** Exercise 36 compares keyword matching with embedding-based similarity using the existing Google Gen AI SDK. It requires internet and API quota but no new Python dependency or vector database.
+- **Version 5 — Usable application:** Exercise 37 provides an interactive CLI, source listing, document reload, visible retrieval, and API error handling.
+
+At each stage, trace a question end to end and record at least one failure. The stages build on one another; they do not replace earlier parts or make Part 4 unnecessary.
+
 ## Deliberately out of scope for the first RAG version
 
 Vector databases, embedding models, fine-tuning, training a transformer from random initialization, and production-grade serving infrastructure. They can be optional extensions after the learner understands the end-to-end flow.
