@@ -10,6 +10,7 @@ This is a learning project, not a state-of-the-art digit recognizer.
 2. Train a neural network with 784 input values, one hidden layer of 64 neurons, and 10 output scores.
 3. See training loss and test accuracy after each epoch.
 4. Display test images beside the model's predictions and confidence scores.
+5. Open one real training step and inspect the forward pass, loss, gradients, and weight update visually.
 
 ## Where does MNIST come from?
 
@@ -81,9 +82,10 @@ Once `data/mnist/mnist.npz` has been created using Option A or Option B, run the
 ```bash
 python 1-first-ml/mnist/02_train_mnist.py
 python 1-first-ml/mnist/03_visualize_predictions.py
+python 1-first-ml/mnist/04_visualize_training_step.py
 ```
 
-Exercise 02 trains for 3 epochs by default. You can change this, for example:
+Exercise 02 trains for 3 epochs by default. Exercise 03 visualizes predictions. Exercise 04 opens one real training example and visualizes the intermediate values and parameter update; it does not overwrite the saved model. You can change this, for example:
 
 ```bash
 python 1-first-ml/mnist/02_train_mnist.py --epochs 5
@@ -107,6 +109,7 @@ The test images are held out from training. Test accuracy is a useful estimate o
 - If automatic download fails, check your internet connection and rerun Exercise 01.
 - If you downloaded files manually, verify all four are in `data/mnist/raw/`, their names match exactly, and they remain `.gz` files.
 - If training is slow, keep the default 3 epochs and close other heavy applications.
-- If Exercise 03 says the model file is missing, run Exercise 02 first.
+- If Exercise 03 or 04 says the model file is missing, run Exercise 02 first.
+- Exercise 04 uses the trained weights and a real training image to demonstrate one additional update in memory. It does not save that update.
 - If Matplotlib is missing, install it with the command above.
 - Dataset files and trained model weights are generated local files, not source code. They should not be committed to GitHub.
