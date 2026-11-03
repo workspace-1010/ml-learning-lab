@@ -12,19 +12,38 @@ The format is inspired by the structure of beginner-friendly programming courses
 
 The target is to understand useful APIs and how the pieces fit together—not to memorize every function or train an LLM from scratch.
 
-## Start here
+## Start here: setup in VS Code
 
-1. Install the basic dependencies:
-   ```bash
-   python -m venv .venv
-   ```
-   On Windows, activate with `.venv\\Scripts\\Activate.ps1`; on macOS/Linux, use `source .venv/bin/activate`.
-   ```bash
-   python -m pip install --upgrade pip
-   python -m pip install -e ".[dev]"
-   ```
-2. Open [How to study](docs/how-to-study.md).
-3. Run the numbered exercises in order.
+For the complete beginner walkthrough, including every required library installation and the model-file download steps, read **[the setup guide](docs/setup-guide.md)** first. This project assumes you already have Python and VS Code installed and have opened the repository folder in VS Code.
+
+Open **Terminal → New Terminal** in VS Code. Create and activate a virtual environment:
+
+**Windows PowerShell**
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install the libraries for Part 1 (NumPy, scikit-learn, and pytest):
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
+
+When you reach Part 2, install the additional libraries (PyTorch and Transformers):
+
+```bash
+python -m pip install -e ".[pretrained]"
+```
+
+**Model download:** the first relevant Part 2 exercise downloads DistilGPT2's tokenizer/configuration files and the approximately 353 MB `model.safetensors` checkpoint from [Hugging Face](https://huggingface.co/distilbert/distilgpt2). Normally you do not need to download them manually in a browser. Exercise 12 explicitly downloads and lists the selected files. An internet connection is needed on the first run; files are reused from the local cache afterward. Details and troubleshooting are in the [setup guide](docs/setup-guide.md).
 
 ## Part 1 — First ML programs
 
@@ -42,12 +61,7 @@ The target is to understand useful APIs and how the pieces fit together—not to
 
 ## Part 2 — DistilGPT2, without a pipeline
 
-We use one specific open model throughout: **[`distilbert/distilgpt2`](https://huggingface.co/distilbert/distilgpt2)**. Its model card lists 82 million parameters and the Apache 2.0 license. The standard Safetensors weights file is approximately 353 MB. It is a small English text-completion model, not a chat assistant. See [Part 2's guide](2-distilgpt2/README.md) before running these exercises.
-
-Install the optional dependencies:
-```bash
-python -m pip install -e ".[pretrained]"
-```
+We use one specific open model throughout: **[`distilbert/distilgpt2`](https://huggingface.co/distilbert/distilgpt2)**. Its model card lists 82 million parameters and the Apache 2.0 license. It is a small English text-completion model, not a chat assistant. Read [Part 2's guide](2-distilgpt2/README.md) before running these exercises.
 
 | Exercise | Program | Idea |
 |---:|---|---|
@@ -65,7 +79,7 @@ Every model exercise uses direct Transformers APIs such as `AutoTokenizer` and `
 
 ## Designed for a modest computer
 
-Start with CPU inference, short prompts, and small generation lengths. A 353 MB checkpoint does not mean the entire program uses only 353 MB of RAM: Python, PyTorch and intermediate tensors also require memory. Four GB is a constrained target, so close memory-heavy programs. Do not download every alternate model export, and never commit weights or model caches to this repository.
+Start with CPU inference, short prompts, and small generation lengths. The checkpoint is about 353 MB, but the full program uses more RAM because Python, PyTorch and intermediate tensors also require memory. Four GB is a constrained target, so close memory-heavy programs. Do not download every alternate model export, and never commit weights or model caches to this repository.
 
 ## Course design and study method
 
