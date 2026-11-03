@@ -64,7 +64,7 @@ For every version, the learner should:
 - deliberately test a failure case, explain a hypothesis for it, and change one thing at a time;
 - write down what is known, what is uncertain, and what the next improvement should be.
 
-The current Exercises 30–35 remain the foundation for Versions 1 and 2. Follow-on exercises can extend the project incrementally; they should not replace or delete the current course. Before any new non-standard dependency is introduced, document its purpose, installation command, and the point in the course where it becomes necessary in the root README and setup guide.
+The current Exercises 30–35 remain the foundation for Versions 1–3. Exercise 36 adds an optional semantic-retrieval comparison using the existing Google Gen AI SDK, and Exercise 37 turns the pipeline into an interactive CLI application. Follow-on work should extend the project incrementally; it should not replace or delete the current course. Before any new non-standard dependency is introduced, document its purpose, installation command, and the point in the course where it becomes necessary in the root README and setup guide.
 
 ## Modest hardware guidance
 
