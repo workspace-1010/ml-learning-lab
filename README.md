@@ -102,7 +102,15 @@ Every model exercise uses direct Transformers APIs such as `AutoTokenizer` and `
 
 ## Part 4 — Use a model through an API
 
-Learn what APIs, endpoints, requests, responses, JSON, and API keys are. Then send a prompt to a model hosted by a provider and read the response. Your PC runs the application; the provider's server runs inference. See [Part 4's guide](4-model-apis/README.md).
+We use the Gemini Developer API free tier where available. Each learner creates their own key; do not enable paid billing to finish the course. See [Part 4's guide](4-model-apis/README.md) for setup, privacy, and quota notes.
+
+| Exercise | Program | Idea |
+|---:|---|---|
+| 25 | [API basics](4-model-apis/25_api_basics.py) | Understand client, endpoint, request, response and authentication |
+| 26 | [HTTP and JSON](4-model-apis/26_http_json_demo.py) | Inspect a sample JSON response offline |
+| 27 | [Environment variables](4-model-apis/27_environment_variables.py) | Check configuration without printing the key |
+| 28 | [First Gemini request](4-model-apis/28_first_gemini_request.py) | Send a prompt and display generated text |
+| 29 | [Error handling](4-model-apis/29_api_errors.py) | Recognize common failure categories |
 
 | Exercise | Program | Idea |
 |---:|---|---|
@@ -114,7 +122,16 @@ Learn what APIs, endpoints, requests, responses, JSON, and API keys are. Then se
 
 ## Part 5 — Build a simple RAG application
 
-Use a few local text files as a tiny knowledge base. Split them into passages, retrieve relevant passages with keyword matching, add them to a prompt, and send the prompt to the model API from Part 4. See [Part 5's guide](5-simple-rag/README.md).
+Use fictional local text files as a knowledge base, retrieve passages with keyword matching, construct a prompt, and send it to the API. See [Part 5's guide](5-simple-rag/README.md).
+
+| Exercise | Program | Idea |
+|---:|---|---|
+| 30 | [Create a knowledge base](5-simple-rag/30_create_knowledge_base.py) | Store fictional practice facts locally |
+| 31 | [Split documents](5-simple-rag/31_split_documents.py) | Turn documents into passages |
+| 32 | [Retrieve passages](5-simple-rag/32_keyword_retrieval.py) | Find useful text with keyword matching |
+| 33 | [Build the prompt](5-simple-rag/33_build_rag_prompt.py) | Combine evidence and the question |
+| 34 | [Generate with RAG](5-simple-rag/34_ask_gemini_with_rag.py) | Call the API using retrieved context |
+| 35 | [Test RAG limits](5-simple-rag/35_test_rag_limits.py) | Inspect retrieval and unsupported-answer failures |
 
 | Exercise | Program | Idea |
 |---:|---|---|
